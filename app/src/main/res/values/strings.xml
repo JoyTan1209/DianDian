@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DianDian</string>
+    <string name="action_settings">Settings</string>
+    <string name="gank">干货</string>
+    <string name="video">视频</string>
+    <string name="photo">图片</string>
+    <string name="settings">设置</string>
+    <string name="title_activity_gnak">GnakActivity</string>
+    <string name="daily_android_tag_tv">Android</string>
+    <string name="daily_ios_tag_tv">iOS</string>
+    <string name="daily_js_tag_tv">前端</string>
+</resources>

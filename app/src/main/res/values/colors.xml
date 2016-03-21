@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="accent">#ff8f00</color><!--#FF5722-->
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+    <color name="icons">#212121</color>
+    <color name="divider">#B6B6B6</color>
+    <color name="background_color">#E1E6EB</color>
+    <color name="item_color">#FAFAFA</color>
+    <color name="fab_color">#99ff8f00</color>
+
+    <color name="primary">#009688</color>
+    <color name="primary_dark">#00796B</color>
+
+    <color name="material_green_a100">#a2f78d</color>
+    <color name="material_green_a200">#5af158</color>
+    <color name="material_green_a400">#14e715</color>
+    <color name="material_green_a700">#12c700</color>
+
+    <color name="material_purple_700">#7b1fa2</color>
+
+    <color name="material_deep_purple_a700">#6200ea</color>
+
+    <color name="material_deep_orange_a200">#ff6e40</color>
+
+    <color name="material_black55">#8c000000</color>
+
+
+    <color name="item_card_background">#ffF6F6EF</color>
+    <color name="item_selectable_pressed">#ff9475CD</color>
+
+    <!-- item -->
+    <color name="item_date">#ffA8A8A8</color>
+    <color name="item_title_tv">#ff000000</color>
+    <color name="item_tag_tv">#ffFFFFFF</color>
+
+    <color name="common_android_tag_bg">#ff388E3C</color>
+    <color name="common_ios_tag_bg">#ff0377BC</color>
+    <color name="common_js_tag_bg">#ffEF6C02</color>
+    <color name="common_github_tag_bg">#ff000000</color>
+    <color name="common_title_tv">#ff000000</color>
+    <color name="common_item_via">#ffA8A8A8</color>
+
+    <color name="material_white">#FFFFFF</color>
+</resources>
