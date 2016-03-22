@@ -1,4 +1,4 @@
-package com.tanchaoyin.diandian.module.setting;
+package com.tanchaoyin.diandian.module.setting.ui;
 
 import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
@@ -14,10 +14,9 @@ import android.widget.ListView;
 
 import com.tanchaoyin.diandian.R;
 import com.tanchaoyin.diandian.base.adapter.ColorsListAdapter;
-import com.tanchaoyin.diandian.module.setting.ui.SettingActivity;
-import com.tanchaoyin.diandian.module.setting.ui.presenter.ISettingPresenter;
-import com.tanchaoyin.diandian.module.setting.ui.presenter.impl.ISettingPresenterImpl;
-import com.tanchaoyin.diandian.module.setting.ui.view.SettingView;
+import com.tanchaoyin.diandian.module.setting.presenter.ISettingPresenter;
+import com.tanchaoyin.diandian.module.setting.presenter.impl.ISettingPresenterImpl;
+import com.tanchaoyin.diandian.module.setting.view.SettingView;
 import com.tanchaoyin.diandian.utils.DialogUtils;
 import com.tanchaoyin.diandian.utils.ThemeUtils;
 

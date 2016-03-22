@@ -1,4 +1,4 @@
-package com.tanchaoyin.diandian.module.setting.ui.presenter;
+package com.tanchaoyin.diandian.module.setting.presenter;
 
 import android.content.Context;
 import android.preference.Preference;

@@ -1,4 +1,4 @@
-package com.tanchaoyin.diandian.module.setting.ui.presenter.impl;
+package com.tanchaoyin.diandian.module.setting.presenter.impl;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -11,8 +11,8 @@ import android.text.TextUtils;
 
 import com.tanchaoyin.diandian.R;
 import com.tanchaoyin.diandian.base.BasePresenterImpl;
-import com.tanchaoyin.diandian.module.setting.ui.presenter.ISettingPresenter;
-import com.tanchaoyin.diandian.module.setting.ui.view.SettingView;
+import com.tanchaoyin.diandian.module.setting.presenter.ISettingPresenter;
+import com.tanchaoyin.diandian.module.setting.view.SettingView;
 import com.tanchaoyin.diandian.utils.PreferenceUtils;
 import com.tanchaoyin.diandian.utils.ThemeUtils;
 

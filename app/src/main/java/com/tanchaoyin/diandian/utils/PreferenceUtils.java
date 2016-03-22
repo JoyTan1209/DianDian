@@ -3,7 +3,7 @@ package com.tanchaoyin.diandian.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.tanchaoyin.diandian.module.setting.SettingFragment;
+import com.tanchaoyin.diandian.module.setting.ui.SettingFragment;
 
 /**
  * Created by TanChaoyin on 2016/3/22.

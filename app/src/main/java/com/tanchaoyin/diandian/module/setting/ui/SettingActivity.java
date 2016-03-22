@@ -6,7 +6,6 @@ import android.support.v7.widget.Toolbar;
 
 import com.tanchaoyin.diandian.R;
 import com.tanchaoyin.diandian.base.BaseActivity;
-import com.tanchaoyin.diandian.module.setting.SettingFragment;
 
 import butterknife.Bind;
 

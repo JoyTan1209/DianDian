@@ -1,4 +1,4 @@
-package com.tanchaoyin.diandian.module.setting.ui.view;
+package com.tanchaoyin.diandian.module.setting.view;
 
 import android.preference.Preference;
 
