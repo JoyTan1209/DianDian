@@ -11,6 +11,8 @@ import com.squareup.leakcanary.RefWatcher;
 import com.tanchaoyin.diandian.annotation.ActivityFragmentInject;
 import com.tanchaoyin.diandian.app.App;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by TanChaoyin on 2016/3/18.
  */
@@ -22,6 +24,12 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     protected View fragmentRootView;
 
     protected int contentViewId;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ButterKnife.bind(getActivity());
+    }
 
     @Nullable
     @Override
@@ -37,6 +45,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
                         "Class must add annotations of ActivityFragmentInitParams.class");
             }
             fragmentRootView = inflater.inflate(contentViewId, container, false);
+
+            ButterKnife.bind(fragmentRootView);
 
             initView(fragmentRootView);
         }
