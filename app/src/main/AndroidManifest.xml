@@ -16,9 +16,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/RedTheme">
         <activity
-            android:name=".module.Gank.ui.GnakActivity"
+            android:name=".module.gank.ui.GnakActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -29,7 +29,7 @@
         </activity>
 
         <activity
-            android:name=".module.Gank.ui.WebAcitivity"
+            android:name=".module.gank.ui.WebAcitivity"
             android:configChanges="orientation|screenSize"
             android:hardwareAccelerated="true"
             android:launchMode="singleTask" />

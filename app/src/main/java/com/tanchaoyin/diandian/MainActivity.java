@@ -6,9 +6,9 @@ import com.tanchaoyin.diandian.base.BaseActivity;
 import com.tanchaoyin.diandian.bean.BaseGankData;
 import com.tanchaoyin.diandian.common.DataLoadState;
 import com.tanchaoyin.diandian.http.GankType;
-import com.tanchaoyin.diandian.module.Gank.presenter.IGankDataPresenter;
-import com.tanchaoyin.diandian.module.Gank.presenter.impl.IGankDataPresenterImpl;
-import com.tanchaoyin.diandian.module.Gank.view.IGankListView;
+import com.tanchaoyin.diandian.module.gank.presenter.IGankDataPresenter;
+import com.tanchaoyin.diandian.module.gank.presenter.impl.IGankDataPresenterImpl;
+import com.tanchaoyin.diandian.module.gank.view.IGankListView;
 
 import java.util.List;
 
@@ -31,5 +31,10 @@ public class MainActivity extends BaseActivity<IGankDataPresenter> implements IG
     @Override
     public void updateGankListView(List<BaseGankData> data, DataLoadState state, String type) {
 
+    }
+
+    @Override
+    protected int getLayoutView() {
+        return 0;
     }
 }
