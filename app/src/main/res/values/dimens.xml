@@ -31,4 +31,9 @@
     <dimen name="item_content_padding">9dp</dimen>
     <dimen name="item_via_tv">12sp</dimen>
 
+    <dimen name="preference_divider_height">0.6dp</dimen>
+    <dimen name="md_simplelist_icon">40dp</dimen>
+    <dimen name="md_simplelist_icon_margin">18dp</dimen>
+    <dimen name="md_dialog_frame_margin">24dp</dimen>
+
 </resources>

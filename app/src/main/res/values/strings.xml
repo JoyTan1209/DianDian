@@ -4,9 +4,28 @@
     <string name="gank">干货</string>
     <string name="video">视频</string>
     <string name="photo">图片</string>
-    <string name="settings">设置</string>
+    <string name="setting">设置</string>
     <string name="title_activity_gnak">GnakActivity</string>
     <string name="daily_android_tag_tv">Android</string>
     <string name="daily_ios_tag_tv">iOS</string>
     <string name="daily_js_tag_tv">前端</string>
+
+    <!-- setting -->
+    <string name="general_settings">常规</string>
+    <string name="right_hand_mode">右手操作模式</string>
+    <string name="right_hand_mode_summary">开启右手操作模式，侧边栏将从右边划开，默认从左边划开</string>
+    <string name="card_note_item_layout">卡片式笔记</string>
+    <string name="advice_feedback">意见反馈</string>
+    <string name="give_favor">给应用点赞</string>
+    <string name="other">其他</string>
+    <string name="pay_for_me_title">觉得不错，随意打赏</string>
+
+    <string name="no_email_app_tip">请先安装邮件应用并设置账户,或直接发送邮件至 joytan1209@163.com</string>
+    <string name="change_theme">更换主题</string>
+    <string name="change_theme_key">change_theme_key</string>
+    <string name="card_note_item_layout_key">card_note_item_layout_key</string>
+    <string name="right_hand_mode_key">right_hand_mode_key</string>
+    <string name="pay_for_me_key">pay_for_me_key</string>
+    <string name="give_favor_key">give_favor_key</string>
+    <string name="advice_feedback_key">advice_feedback_key</string>
 </resources>

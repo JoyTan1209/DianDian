@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.tanchaoyin.diandian.module.Gank.ui.GnakActivity">
+    tools:context="com.tanchaoyin.diandian.module.gank.ui.GnakActivity">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="wrap_content"
@@ -18,9 +18,9 @@
             android:layout_height="wrap_content"
             android:theme="@style/AppTheme.AppBarOverlay">
 
-            <include layout="@layout/include_toolbar"/>
+        <include layout="@layout/toolbar_layout" />
 
-            <include layout="@layout/include_tablayout"/>
+        <include layout="@layout/include_tablayout"/>
 
         </android.support.design.widget.AppBarLayout>
 
@@ -28,6 +28,6 @@
 
     </android.support.design.widget.CoordinatorLayout>
 
-    <include layout="@layout/include_navigation_view"/>
+<!--    <include layout="@layout/include_navigation_view"/>-->
 
 </android.support.v4.widget.DrawerLayout>
