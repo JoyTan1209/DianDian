@@ -7,7 +7,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:elevation="6dp">
 
-    <android.support.v7.widget.Toolbar
+   <!-- <android.support.v7.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/toolbar"
@@ -15,6 +15,6 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         app:layout_scrollFlags="scroll|enterAlways"
-        app:theme="?attr/toolbarTheme" />
+        app:theme="?attr/toolbarTheme" />-->
 
 </android.support.design.widget.AppBarLayout>

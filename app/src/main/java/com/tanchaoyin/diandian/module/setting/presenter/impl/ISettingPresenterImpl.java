@@ -118,12 +118,6 @@ public class ISettingPresenterImpl extends BasePresenterImpl<SettingView,List<St
 
     @Override
     public void notifyChangeTheme() {
-       /* if (event == null){
-            event = new MainPresenter.NotifyEvent<>();
-        }
-        event.setType(MainPresenter.NotifyEvent.CHANGE_THEME);
-        //post change theme event immediately
-        EventBus.getDefault().post(event);*/
         view.reload();
     }
 

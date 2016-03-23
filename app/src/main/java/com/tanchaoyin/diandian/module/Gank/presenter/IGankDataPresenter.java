@@ -1,4 +1,4 @@
-package com.tanchaoyin.diandian.module.Gank.presenter;
+package com.tanchaoyin.diandian.module.gank.presenter;
 
 import com.tanchaoyin.diandian.base.BasePresenter;
 

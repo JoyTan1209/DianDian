@@ -1,18 +1,19 @@
-package com.tanchaoyin.diandian.module.Gank.ui;
+package com.tanchaoyin.diandian.module.gank.ui;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 
 import com.tanchaoyin.diandian.R;
-import com.tanchaoyin.diandian.annotation.ActivityFragmentInject;
 import com.tanchaoyin.diandian.app.AppManager;
 import com.tanchaoyin.diandian.base.BaseActivity;
 import com.tanchaoyin.diandian.base.BaseFragment;
 import com.tanchaoyin.diandian.base.adapter.BaseFragmentAdapter;
 import com.tanchaoyin.diandian.http.GankType;
-import com.tanchaoyin.diandian.module.Gank.presenter.IGankPresenter;
-import com.tanchaoyin.diandian.module.Gank.presenter.impl.IGankPresenterImpl;
-import com.tanchaoyin.diandian.module.Gank.view.IGankView;
+import com.tanchaoyin.diandian.module.gank.presenter.IGankPresenter;
+import com.tanchaoyin.diandian.module.gank.presenter.impl.IGankPresenterImpl;
+import com.tanchaoyin.diandian.module.gank.view.IGankView;
+import com.tanchaoyin.diandian.utils.ToolbarUtils;
 import com.tanchaoyin.diandian.utils.ViewUtil;
 
 import java.util.ArrayList;
@@ -20,14 +21,19 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
-@ActivityFragmentInject(contentViewId = R.layout.activity_gnak,
-        menuId = 0,
-        hasNavigationView = true,
-        toolbarTitle = R.string.gank,
-        toolbarIndicator = R.mipmap.ic_menu_white_24dp,
-        menuDefaultCheckedItem = R.id.action_gank)
 public class GnakActivity extends BaseActivity<IGankPresenter> implements IGankView {
+
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+
+    @Bind(R.id.tabs)
+    TabLayout tabLayout;
+
+    @Bind(R.id.viewpager)
+    ViewPager viewPager;
 
     @Override
     protected void initView() {
@@ -35,14 +41,27 @@ public class GnakActivity extends BaseActivity<IGankPresenter> implements IGankV
         AppManager.getAppManager().orderNavActivity(getClass().getName(), false);
 
         presenter = new IGankPresenterImpl(this);
+
+        ButterKnife.bind(this);
+    }
+
+    @Override
+    protected int getLayoutView() {
+        return R.layout.activity_gnak;
+    }
+
+    @Override
+    protected void initToolbar() {
+        super.initToolbar();
+        ToolbarUtils.initToolbar(toolbar, this);
     }
 
     @Override
     public void initViewPager() {
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        /*TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);*/
 
         List<BaseFragment> fragments = new ArrayList<>();
         final List<String> title = new ArrayList<>();
@@ -107,5 +126,10 @@ public class GnakActivity extends BaseActivity<IGankPresenter> implements IGankV
     @Override
     public void initRxBusEvent() {
 
+    }
+
+    @Override
+    public void setToolbarTitle(String title) {
+        toolbar.setTitle(R.string.app_name);
     }
 }

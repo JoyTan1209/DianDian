@@ -1,4 +1,4 @@
-package com.tanchaoyin.diandian.module.Gank.ui;
+package com.tanchaoyin.diandian.module.gank.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

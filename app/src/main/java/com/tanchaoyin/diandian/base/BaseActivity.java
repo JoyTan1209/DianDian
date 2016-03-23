@@ -1,9 +1,11 @@
 package com.tanchaoyin.diandian.base;
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.os.StrictMode;
 import android.support.annotation.ColorRes;
 import android.support.annotation.LayoutRes;
@@ -75,7 +77,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
         parseIntent(getIntent());
 
-        initTheme();
+        initTheme(this);
 
         initWindow();
 
@@ -150,8 +152,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         }
     }
 
-    private void initTheme(){
-        ThemeUtils.Theme theme = ThemeUtils.getCurrentTheme(this);
+    private void initTheme(Context context){
+        ThemeUtils.Theme theme = ThemeUtils.getCurrentTheme(context);
         ThemeUtils.changeTheme(this, theme);
     }
 

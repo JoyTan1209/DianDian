@@ -1,8 +1,8 @@
-package com.tanchaoyin.diandian.module.Gank.presenter.impl;
+package com.tanchaoyin.diandian.module.gank.presenter.impl;
 
 import com.tanchaoyin.diandian.base.BasePresenterImpl;
-import com.tanchaoyin.diandian.module.Gank.presenter.IGankPresenter;
-import com.tanchaoyin.diandian.module.Gank.view.IGankView;
+import com.tanchaoyin.diandian.module.gank.presenter.IGankPresenter;
+import com.tanchaoyin.diandian.module.gank.view.IGankView;
 
 import java.util.HashMap;
 

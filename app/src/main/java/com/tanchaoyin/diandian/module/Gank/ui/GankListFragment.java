@@ -1,4 +1,4 @@
-package com.tanchaoyin.diandian.module.Gank.ui;
+package com.tanchaoyin.diandian.module.gank.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,8 +7,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.Switch;
 
 import com.socks.library.KLog;
 import com.tanchaoyin.diandian.R;
@@ -22,9 +20,9 @@ import com.tanchaoyin.diandian.callback.OnItemClickAdapter;
 import com.tanchaoyin.diandian.common.DataLoadState;
 import com.tanchaoyin.diandian.http.GankApi;
 import com.tanchaoyin.diandian.http.GankType;
-import com.tanchaoyin.diandian.module.Gank.presenter.IGankDataPresenter;
-import com.tanchaoyin.diandian.module.Gank.presenter.impl.IGankDataPresenterImpl;
-import com.tanchaoyin.diandian.module.Gank.view.IGankListView;
+import com.tanchaoyin.diandian.module.gank.presenter.IGankDataPresenter;
+import com.tanchaoyin.diandian.module.gank.presenter.impl.IGankDataPresenterImpl;
+import com.tanchaoyin.diandian.module.gank.view.IGankListView;
 import com.tanchaoyin.diandian.utils.AttrsHelper;
 import com.tanchaoyin.diandian.utils.DateUtils;
 import com.tanchaoyin.diandian.utils.GanKDataTagUtil;
@@ -35,9 +33,6 @@ import com.tanchaoyin.diandian.widget.MultiSwipeRefreshLayout;
 import com.tanchaoyin.diandian.widget.RatioImageView;
 
 import java.util.List;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Created by TanChaoyin on 2016/3/18.

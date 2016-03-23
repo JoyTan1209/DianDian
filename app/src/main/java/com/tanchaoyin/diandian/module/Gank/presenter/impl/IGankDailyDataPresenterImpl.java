@@ -1,15 +1,14 @@
-package com.tanchaoyin.diandian.module.Gank.presenter.impl;
+package com.tanchaoyin.diandian.module.gank.presenter.impl;
 
 import com.socks.library.KLog;
 import com.tanchaoyin.diandian.base.BasePresenterImpl;
-import com.tanchaoyin.diandian.bean.BaseGankData;
 import com.tanchaoyin.diandian.bean.GankDaily;
 import com.tanchaoyin.diandian.common.DataLoadState;
 import com.tanchaoyin.diandian.http.GankApi;
-import com.tanchaoyin.diandian.module.Gank.model.IGankDailyInteractor;
-import com.tanchaoyin.diandian.module.Gank.model.impl.IGankDailyInteractorImpl;
-import com.tanchaoyin.diandian.module.Gank.presenter.IGankDataPresenter;
-import com.tanchaoyin.diandian.module.Gank.view.IGankDailyView;
+import com.tanchaoyin.diandian.module.gank.model.IGankDailyInteractor;
+import com.tanchaoyin.diandian.module.gank.model.impl.IGankDailyInteractorImpl;
+import com.tanchaoyin.diandian.module.gank.presenter.IGankDataPresenter;
+import com.tanchaoyin.diandian.module.gank.view.IGankDailyView;
 import com.tanchaoyin.diandian.utils.DateUtils;
 
 import java.io.Serializable;

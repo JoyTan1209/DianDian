@@ -1,14 +1,12 @@
-package com.tanchaoyin.diandian.module.Gank.ui;
+package com.tanchaoyin.diandian.module.gank.ui;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.text.TextUtils;
 import android.view.View;
 
-import com.socks.library.KLog;
 import com.tanchaoyin.diandian.R;
 import com.tanchaoyin.diandian.annotation.ActivityFragmentInject;
 import com.tanchaoyin.diandian.base.BaseFragment;
@@ -21,9 +19,9 @@ import com.tanchaoyin.diandian.callback.OnItemClickAdapter;
 import com.tanchaoyin.diandian.common.CommonConstant;
 import com.tanchaoyin.diandian.common.DataLoadState;
 import com.tanchaoyin.diandian.http.GankApi;
-import com.tanchaoyin.diandian.module.Gank.presenter.IGankDataPresenter;
-import com.tanchaoyin.diandian.module.Gank.presenter.impl.IGankDailyDataPresenterImpl;
-import com.tanchaoyin.diandian.module.Gank.view.IGankDailyView;
+import com.tanchaoyin.diandian.module.gank.presenter.IGankDataPresenter;
+import com.tanchaoyin.diandian.module.gank.presenter.impl.IGankDailyDataPresenterImpl;
+import com.tanchaoyin.diandian.module.gank.view.IGankDailyView;
 import com.tanchaoyin.diandian.utils.AttrsHelper;
 import com.tanchaoyin.diandian.utils.DateUtils;
 import com.tanchaoyin.diandian.utils.GlideUtils;
@@ -33,14 +31,18 @@ import com.tanchaoyin.diandian.widget.MultiSwipeRefreshLayout;
 
 import java.util.List;
 
+import butterknife.Bind;
+
 /**
  * Created by TanChaoyin on 2016/3/18.
  */
 @ActivityFragmentInject(contentViewId = R.layout.fragment_ganklist)
 public class GankDailyListFragment extends BaseFragment<IGankDataPresenter> implements IGankDailyView {
 
+//    @Bind(R.id.gank_list_rv)
     AutoLoadMoreRecyclerView autoLoadMoreRecyclerView;
 
+//    @Bind(R.id.refresh_layout)
     MultiSwipeRefreshLayout refreshLayout;
 
     private BaseRecyclerAdapter<GankDaily> recyclerAdapter;

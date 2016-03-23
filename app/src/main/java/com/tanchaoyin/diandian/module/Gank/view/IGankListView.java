@@ -1,4 +1,4 @@
-package com.tanchaoyin.diandian.module.Gank.view;
+package com.tanchaoyin.diandian.module.gank.view;
 
 import com.tanchaoyin.diandian.base.BaseView;
 import com.tanchaoyin.diandian.bean.BaseGankData;

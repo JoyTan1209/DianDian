@@ -1,4 +1,4 @@
-package com.tanchaoyin.diandian.module.Gank;
+package com.tanchaoyin.diandian.module.gank;
 
 /**
  * Created by TanChaoyin on 2016/3/8.

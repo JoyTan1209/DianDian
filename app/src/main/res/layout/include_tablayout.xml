@@ -12,4 +12,5 @@
     app:tabMode="scrollable"
     app:tabSelectedTextColor="@color/material_white"
     app:tabTextColor="@color/material_grey_300"
-    tools:ignore="PrivateResource"/>
+    tools:ignore="PrivateResource"
+    android:visibility="gone"/>

@@ -1,13 +1,13 @@
-package com.tanchaoyin.diandian.module.Gank.presenter.impl;
+package com.tanchaoyin.diandian.module.gank.presenter.impl;
 
 import com.socks.library.KLog;
 import com.tanchaoyin.diandian.base.BasePresenterImpl;
 import com.tanchaoyin.diandian.bean.BaseGankData;
 import com.tanchaoyin.diandian.common.DataLoadState;
-import com.tanchaoyin.diandian.module.Gank.model.IGankInteractor;
-import com.tanchaoyin.diandian.module.Gank.model.impl.IGankInteractorImpl;
-import com.tanchaoyin.diandian.module.Gank.presenter.IGankDataPresenter;
-import com.tanchaoyin.diandian.module.Gank.view.IGankListView;
+import com.tanchaoyin.diandian.module.gank.model.IGankInteractor;
+import com.tanchaoyin.diandian.module.gank.model.impl.IGankInteractorImpl;
+import com.tanchaoyin.diandian.module.gank.presenter.IGankDataPresenter;
+import com.tanchaoyin.diandian.module.gank.view.IGankListView;
 
 import java.util.List;
 

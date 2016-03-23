@@ -1,7 +1,7 @@
-package com.tanchaoyin.diandian.module.Gank.model;
+package com.tanchaoyin.diandian.module.gank.model;
 
 import com.tanchaoyin.diandian.callback.RequestCallback;
-import com.tanchaoyin.diandian.module.Gank.presenter.impl.IGankDailyDataPresenterImpl;
+import com.tanchaoyin.diandian.module.gank.presenter.impl.IGankDailyDataPresenterImpl;
 
 import rx.Subscription;
 

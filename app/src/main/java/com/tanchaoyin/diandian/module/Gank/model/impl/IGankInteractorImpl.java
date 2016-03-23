@@ -1,14 +1,13 @@
-package com.tanchaoyin.diandian.module.Gank.model.impl;
+package com.tanchaoyin.diandian.module.gank.model.impl;
 
 import com.socks.library.KLog;
 import com.tanchaoyin.diandian.bean.BaseGankData;
 import com.tanchaoyin.diandian.callback.RequestCallback;
 import com.tanchaoyin.diandian.http.manager.RetrofitManager;
-import com.tanchaoyin.diandian.module.Gank.model.IGankInteractor;
+import com.tanchaoyin.diandian.module.gank.model.IGankInteractor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import rx.Subscriber;
 import rx.Subscription;

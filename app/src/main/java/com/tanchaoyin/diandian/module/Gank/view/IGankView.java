@@ -1,4 +1,4 @@
-package com.tanchaoyin.diandian.module.Gank.view;
+package com.tanchaoyin.diandian.module.gank.view;
 
 import com.tanchaoyin.diandian.base.BaseView;
 
@@ -10,4 +10,6 @@ public interface IGankView extends BaseView {
     void initViewPager();
 
     void initRxBusEvent();
+
+    void setToolbarTitle(String title);
 }

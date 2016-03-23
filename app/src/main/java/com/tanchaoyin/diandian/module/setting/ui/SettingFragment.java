@@ -3,8 +3,6 @@ package com.tanchaoyin.diandian.module.setting.ui;
 import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
-import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -23,6 +21,9 @@ import com.tanchaoyin.diandian.utils.ThemeUtils;
 import java.util.Arrays;
 import java.util.List;
 
+import io.github.xhinliang.mdpreference.CheckBoxPreference;
+import io.github.xhinliang.mdpreference.Preference;
+
 /**
  * Created by TanChaoyin on 2016/3/22.
  */
@@ -32,7 +33,8 @@ public class SettingFragment extends PreferenceFragment implements SettingView {
     private CheckBoxPreference rightHandModePreference;
     private Preference feedbackPreference;
     private CheckBoxPreference cardLayoutPreference;
-    private Preference payMePreference;    private Preference giveFavorPreference;
+    private Preference payMePreference;
+    private Preference giveFavorPreference;
     private Preference everAccountPreference;
     ISettingPresenter settingPresenter;
     private SettingActivity activity;

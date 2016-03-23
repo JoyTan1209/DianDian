@@ -1,11 +1,11 @@
-package com.tanchaoyin.diandian.module.Gank.model.impl;
+package com.tanchaoyin.diandian.module.gank.model.impl;
 
 import com.socks.library.KLog;
 import com.tanchaoyin.diandian.bean.GankDaily;
 import com.tanchaoyin.diandian.callback.RequestCallback;
 import com.tanchaoyin.diandian.http.manager.RetrofitManager;
-import com.tanchaoyin.diandian.module.Gank.model.IGankDailyInteractor;
-import com.tanchaoyin.diandian.module.Gank.presenter.impl.IGankDailyDataPresenterImpl;
+import com.tanchaoyin.diandian.module.gank.model.IGankDailyInteractor;
+import com.tanchaoyin.diandian.module.gank.presenter.impl.IGankDailyDataPresenterImpl;
 
 import java.util.List;
 

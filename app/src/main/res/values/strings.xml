@@ -18,7 +18,14 @@
     <string name="advice_feedback">意见反馈</string>
     <string name="give_favor">给应用点赞</string>
     <string name="other">其他</string>
+    <string name="more">更多</string>
+    <string name="about">关于</string>
     <string name="pay_for_me_title">觉得不错，随意打赏</string>
+
+    <array name="drawer_content">
+        <item>干货</item>
+        <item>回收站</item>
+    </array>
 
     <string name="no_email_app_tip">请先安装邮件应用并设置账户,或直接发送邮件至 joytan1209@163.com</string>
     <string name="change_theme">更换主题</string>
