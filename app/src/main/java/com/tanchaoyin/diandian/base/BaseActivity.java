@@ -77,7 +77,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
         parseIntent(getIntent());
 
-        initTheme(this);
+        initTheme();
 
         initWindow();
 
@@ -143,7 +143,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
     @TargetApi(19)
     private void initWindow(){
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
             SystemBarTintManager tintManager = new SystemBarTintManager(this);
@@ -152,8 +152,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         }
     }
 
-    private void initTheme(Context context){
-        ThemeUtils.Theme theme = ThemeUtils.getCurrentTheme(context);
+    private void initTheme(){
+        ThemeUtils.Theme theme = ThemeUtils.getCurrentTheme(this);
         ThemeUtils.changeTheme(this, theme);
     }
 
@@ -161,6 +161,11 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         if (isStartAnim) {
             overridePendingTransition(R.anim.activity_down_up_anim, R.anim.activity_exit_anim);
         }
+    }
+
+    //call before super.onCreate(savedInstanceState)
+    protected void launchWithNoAnim() {
+        isStartAnim = false;
     }
 
     private void parseIntent(Intent intent){
@@ -201,6 +206,20 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
     protected void initToolbar(){
 
+    }
+
+    public void reload(boolean anim) {
+        Intent intent = getIntent();
+        if (!anim) {
+            overridePendingTransition(0, 0);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            intent.putExtra(BaseActivity.IS_START_ANIM, false);
+        }
+        finish();
+        if (!anim) {
+            overridePendingTransition(0, 0);
+        }
+        startActivity(intent);
     }
 
     protected abstract void initView();

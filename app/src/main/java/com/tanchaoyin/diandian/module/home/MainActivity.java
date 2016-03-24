@@ -48,6 +48,7 @@ public class MainActivity extends BaseActivity<IMainPresenter> implements MainVi
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        launchWithNoAnim();
         super.onCreate(savedInstanceState);
     }
 
@@ -152,6 +153,11 @@ public class MainActivity extends BaseActivity<IMainPresenter> implements MainVi
     @Override
     public void moveTaskToBack() {
         super.moveTaskToBack(true);
+    }
+
+    @Override
+    public void reCreate() {
+        super.recreate();
     }
 
     @Override

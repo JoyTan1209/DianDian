@@ -61,5 +61,4 @@
     </declare-styleable>
 
     <attr name="colorPrimaryLight" format="reference|color" />
-
 </resources>

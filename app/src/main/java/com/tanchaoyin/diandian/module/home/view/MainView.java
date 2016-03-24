@@ -24,4 +24,6 @@ public interface MainView extends BaseView {
     void setMenuGravity(int gravity);
 
     void moveTaskToBack();
+
+    void reCreate();
 }

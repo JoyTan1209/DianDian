@@ -11,12 +11,15 @@ import android.text.TextUtils;
 
 import com.tanchaoyin.diandian.R;
 import com.tanchaoyin.diandian.base.BasePresenterImpl;
+import com.tanchaoyin.diandian.module.home.presenter.impl.IMainPresenterImpl;
 import com.tanchaoyin.diandian.module.setting.presenter.ISettingPresenter;
 import com.tanchaoyin.diandian.module.setting.view.SettingView;
 import com.tanchaoyin.diandian.utils.PreferenceUtils;
 import com.tanchaoyin.diandian.utils.ThemeUtils;
 
 import java.util.List;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by TanChaoyin on 2016/3/22.
@@ -28,12 +31,14 @@ public class ISettingPresenterImpl extends BasePresenterImpl<SettingView,List<St
     private PreferenceUtils mPreferenceUtils;
     private Context mContext;
 
+    private IMainPresenterImpl.NotifyEvent<Void> event;
+
     public ISettingPresenterImpl(Context mContext,SettingView settingView) {
         super(settingView);
         this.mContext = mContext;
         view.findPreference();
+        mPreferenceUtils = PreferenceUtils.getInstance(mContext);
     }
-
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
@@ -118,6 +123,12 @@ public class ISettingPresenterImpl extends BasePresenterImpl<SettingView,List<St
 
     @Override
     public void notifyChangeTheme() {
+        if (event == null){
+            event = new IMainPresenterImpl.NotifyEvent<>();
+        }
+        event.setType(IMainPresenterImpl.NotifyEvent.CHANGE_THEME);
+        //post change theme event immediately
+        EventBus.getDefault().post(event);
         view.reload();
     }
 

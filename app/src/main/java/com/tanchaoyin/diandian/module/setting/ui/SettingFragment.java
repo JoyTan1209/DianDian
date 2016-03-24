@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceScreen;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,6 +57,12 @@ public class SettingFragment extends PreferenceFragment implements SettingView {
         addPreferencesFromResource(R.xml.prefs);
         getPreferenceManager().setSharedPreferencesName(PREFERENCE_FILE_NAME);
         settingPresenter = new ISettingPresenterImpl(this.activity,this);
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,  android.preference.Preference preference) {
+        settingPresenter.onPreferenceTreeClick(preference);
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     @Override
@@ -133,7 +140,9 @@ public class SettingFragment extends PreferenceFragment implements SettingView {
 
     @Override
     public void reload() {
-
+        if (activity != null){
+            activity.reload(false);
+        }
     }
 
     @Override
