@@ -8,17 +8,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.tanchaoyin.diandian.R;
-import com.tanchaoyin.diandian.annotation.ActivityFragmentInject;
 import com.tanchaoyin.diandian.base.BaseFragment;
 import com.tanchaoyin.diandian.base.BaseSpacesItemDecoration;
 import com.tanchaoyin.diandian.base.adapter.BaseRecyclerAdapter;
 import com.tanchaoyin.diandian.base.adapter.BaseRecyclerViewHolder;
-import com.tanchaoyin.diandian.bean.BaseGankData;
-import com.tanchaoyin.diandian.bean.GankDaily;
+import com.tanchaoyin.diandian.bean.gank.BaseGankData;
+import com.tanchaoyin.diandian.bean.gank.GankDaily;
 import com.tanchaoyin.diandian.callback.OnItemClickAdapter;
 import com.tanchaoyin.diandian.common.CommonConstant;
 import com.tanchaoyin.diandian.common.DataLoadState;
-import com.tanchaoyin.diandian.http.GankApi;
+import com.tanchaoyin.diandian.api.gank.GankApi;
 import com.tanchaoyin.diandian.module.gank.presenter.IGankDataPresenter;
 import com.tanchaoyin.diandian.module.gank.presenter.impl.IGankDailyDataPresenterImpl;
 import com.tanchaoyin.diandian.module.gank.view.IGankDailyView;
@@ -31,12 +30,9 @@ import com.tanchaoyin.diandian.widget.MultiSwipeRefreshLayout;
 
 import java.util.List;
 
-import butterknife.Bind;
-
 /**
  * Created by TanChaoyin on 2016/3/18.
  */
-@ActivityFragmentInject(contentViewId = R.layout.fragment_ganklist)
 public class GankDailyListFragment extends BaseFragment<IGankDataPresenter> implements IGankDailyView {
 
 //    @Bind(R.id.gank_list_rv)
@@ -96,6 +92,11 @@ public class GankDailyListFragment extends BaseFragment<IGankDataPresenter> impl
 
         presenter = new IGankDailyDataPresenterImpl(this);
 
+    }
+
+    @Override
+    protected int getLayoutView() {
+        return R.layout.fragment_ganklist;
     }
 
     private void initGankDailyList(final List<GankDaily> data) {

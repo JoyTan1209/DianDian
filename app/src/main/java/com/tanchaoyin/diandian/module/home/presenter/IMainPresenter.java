@@ -11,6 +11,8 @@ public interface IMainPresenter extends BasePresenter {
 
     void initMenuGravity();
 
+    void initLeftMenu();
+
     void onDrawerItemSelect(int position);
 
     void onDrawerOpened();

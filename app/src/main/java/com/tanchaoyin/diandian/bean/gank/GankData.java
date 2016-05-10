@@ -1,9 +1,8 @@
-package com.tanchaoyin.diandian.bean;
+package com.tanchaoyin.diandian.bean.gank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**

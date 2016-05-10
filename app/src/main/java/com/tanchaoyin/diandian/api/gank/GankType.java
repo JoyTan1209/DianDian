@@ -1,6 +1,5 @@
-package com.tanchaoyin.diandian.http;
+package com.tanchaoyin.diandian.api.gank;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package com.tanchaoyin.diandian.http;
+package com.tanchaoyin.diandian.api.gank;
 
 /**
  *

@@ -1,9 +1,9 @@
 package com.tanchaoyin.diandian.module.gank.model.impl;
 
 import com.socks.library.KLog;
-import com.tanchaoyin.diandian.bean.GankDaily;
+import com.tanchaoyin.diandian.bean.gank.GankDaily;
 import com.tanchaoyin.diandian.callback.RequestCallback;
-import com.tanchaoyin.diandian.http.manager.RetrofitManager;
+import com.tanchaoyin.diandian.api.gank.manager.RetrofitManagerGank;
 import com.tanchaoyin.diandian.module.gank.model.IGankDailyInteractor;
 import com.tanchaoyin.diandian.module.gank.presenter.impl.IGankDailyDataPresenterImpl;
 
@@ -23,7 +23,7 @@ public class IGankDailyInteractorImpl implements IGankDailyInteractor<List<GankD
     @Override
     public Subscription requestGankDailyList(RequestCallback<List<GankDaily>> callback, IGankDailyDataPresenterImpl.EasyDate easyDate) {
         KLog.e("GankDaily数据列表" + "--");
-        return RetrofitManager.getInstance()
+        return RetrofitManagerGank.getInstance()
                 .getGankDailyListObservable(easyDate)
                 .doOnSubscribe(new Action0() {
                     @Override

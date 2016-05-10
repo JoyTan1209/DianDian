@@ -1,7 +1,7 @@
 package com.tanchaoyin.diandian.module.gank.view;
 
 import com.tanchaoyin.diandian.base.BaseView;
-import com.tanchaoyin.diandian.bean.GankDaily;
+import com.tanchaoyin.diandian.bean.gank.GankDaily;
 import com.tanchaoyin.diandian.common.DataLoadState;
 
 import java.util.List;

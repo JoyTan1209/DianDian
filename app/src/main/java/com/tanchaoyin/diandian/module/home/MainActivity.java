@@ -3,18 +3,24 @@ package com.tanchaoyin.diandian.module.home;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.tanchaoyin.diandian.R;
 import com.tanchaoyin.diandian.base.BaseActivity;
@@ -25,6 +31,7 @@ import com.tanchaoyin.diandian.module.home.presenter.impl.IMainPresenterImpl;
 import com.tanchaoyin.diandian.module.home.view.MainView;
 import com.tanchaoyin.diandian.utils.ToolbarUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -43,6 +50,10 @@ public class MainActivity extends BaseActivity<IMainPresenter> implements MainVi
     @Bind(R.id.coordinator_layout)
     CoordinatorLayout coordinatorLayout;
     private ActionBarDrawerToggle mDrawerToggle;
+
+    private Fragment currentFragment;
+    private ArrayList<Fragment> mFragments;
+    private ArrayList<Integer> mTitles;
 
     private IMainPresenter mainPresenter;
 
@@ -68,6 +79,7 @@ public class MainActivity extends BaseActivity<IMainPresenter> implements MainVi
         List<String> drawerList = Arrays.asList(this.getResources()
                 .getStringArray(R.array.drawer_content));
         mainPresenter = new IMainPresenterImpl(this,this,drawerList);
+        mainPresenter.initLeftMenu();
     }
 
     @Override
@@ -91,11 +103,29 @@ public class MainActivity extends BaseActivity<IMainPresenter> implements MainVi
     }
 
     @Override
+    public void initLeftMenu(ArrayList<Fragment> fragments, ArrayList<Integer> titles) {
+        mFragments = fragments;
+        mTitles = titles;
+        switchFragment(mFragments.get(0), getString(titles.get(0)));
+    }
+
+    @Override
     public void initDrawerView(List<String> list) {
         SimpleListAdapter adapter = new DrawerListAdapter(this, list);
         mDrawerMenuListView.setAdapter(adapter);
-        mDrawerMenuListView.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) ->
-                mainPresenter.onDrawerItemSelect(position));
+       /* mDrawerMenuListView.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) ->
+                mainPresenter.onDrawerItemSelect(position));*/
+        mDrawerMenuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                LinearLayout linearLayout = (LinearLayout) view;
+                TextView textView = (TextView) linearLayout.getChildAt(0);
+                textView.getText();
+                switchFragment(mFragments.get(position), textView.getText().toString());
+                closeDrawer();
+            }
+        });
+
 //        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, 0, 0)
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.app_name, R.string.app_name){
             @Override
@@ -203,5 +233,22 @@ public class MainActivity extends BaseActivity<IMainPresenter> implements MainVi
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void switchFragment(Fragment fragment, String title) {
+        Slide slideTransition;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            //Gravity.START部分机型崩溃java.lang.IllegalArgumentException: Invalid slide direction
+            slideTransition = new Slide(Gravity.LEFT);
+            slideTransition.setDuration(700);
+            fragment.setEnterTransition(slideTransition);
+            fragment.setExitTransition(slideTransition);
+        }
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.replace, fragment).commit();
+        currentFragment = fragment;
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setTitle(title);
     }
 }

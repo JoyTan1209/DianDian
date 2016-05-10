@@ -3,7 +3,7 @@ package com.tanchaoyin.diandian.utils;
 import android.graphics.drawable.GradientDrawable;
 import android.widget.TextView;
 
-import com.tanchaoyin.diandian.http.GankType;
+import com.tanchaoyin.diandian.api.gank.GankType;
 
 /**
  * Created by TanChaoyin on 2016/3/18.

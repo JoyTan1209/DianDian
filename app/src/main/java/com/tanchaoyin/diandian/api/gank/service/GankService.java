@@ -1,8 +1,7 @@
-package com.tanchaoyin.diandian.http.service;
+package com.tanchaoyin.diandian.api.gank.service;
 
-import com.tanchaoyin.diandian.bean.GankDaily;
-import com.tanchaoyin.diandian.bean.BaseGankData;
-import com.tanchaoyin.diandian.bean.GankData;
+import com.tanchaoyin.diandian.bean.gank.GankDaily;
+import com.tanchaoyin.diandian.bean.gank.GankData;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;

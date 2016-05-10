@@ -2,7 +2,7 @@ package com.tanchaoyin.diandian.module.gank.presenter.impl;
 
 import com.socks.library.KLog;
 import com.tanchaoyin.diandian.base.BasePresenterImpl;
-import com.tanchaoyin.diandian.bean.BaseGankData;
+import com.tanchaoyin.diandian.bean.gank.BaseGankData;
 import com.tanchaoyin.diandian.common.DataLoadState;
 import com.tanchaoyin.diandian.module.gank.model.IGankInteractor;
 import com.tanchaoyin.diandian.module.gank.model.impl.IGankInteractorImpl;

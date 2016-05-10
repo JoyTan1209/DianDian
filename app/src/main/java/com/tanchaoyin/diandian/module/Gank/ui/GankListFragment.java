@@ -10,16 +10,15 @@ import android.view.View;
 
 import com.socks.library.KLog;
 import com.tanchaoyin.diandian.R;
-import com.tanchaoyin.diandian.annotation.ActivityFragmentInject;
 import com.tanchaoyin.diandian.base.BaseFragment;
 import com.tanchaoyin.diandian.base.BaseSpacesItemDecoration;
 import com.tanchaoyin.diandian.base.adapter.BaseRecyclerAdapter;
 import com.tanchaoyin.diandian.base.adapter.BaseRecyclerViewHolder;
-import com.tanchaoyin.diandian.bean.BaseGankData;
+import com.tanchaoyin.diandian.bean.gank.BaseGankData;
 import com.tanchaoyin.diandian.callback.OnItemClickAdapter;
 import com.tanchaoyin.diandian.common.DataLoadState;
-import com.tanchaoyin.diandian.http.GankApi;
-import com.tanchaoyin.diandian.http.GankType;
+import com.tanchaoyin.diandian.api.gank.GankApi;
+import com.tanchaoyin.diandian.api.gank.GankType;
 import com.tanchaoyin.diandian.module.gank.presenter.IGankDataPresenter;
 import com.tanchaoyin.diandian.module.gank.presenter.impl.IGankDataPresenterImpl;
 import com.tanchaoyin.diandian.module.gank.view.IGankListView;
@@ -37,7 +36,6 @@ import java.util.List;
 /**
  * Created by TanChaoyin on 2016/3/18.
  */
-@ActivityFragmentInject(contentViewId = R.layout.fragment_ganklist)
 public class GankListFragment extends BaseFragment<IGankDataPresenter> implements IGankListView {
 
     AutoLoadMoreRecyclerView autoLoadMoreRecyclerView;
@@ -95,6 +93,11 @@ public class GankListFragment extends BaseFragment<IGankDataPresenter> implement
 
         presenter = new IGankDataPresenterImpl(this, gankType);
 
+    }
+
+    @Override
+    protected int getLayoutView() {
+        return R.layout.fragment_ganklist;
     }
 
     @Override

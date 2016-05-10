@@ -1,8 +1,6 @@
-package com.tanchaoyin.diandian.http;
+package com.tanchaoyin.diandian.api.gank;
 
 import android.util.SparseArray;
-
-import com.tanchaoyin.diandian.R;
 
 import java.util.HashMap;
 import java.util.Map;

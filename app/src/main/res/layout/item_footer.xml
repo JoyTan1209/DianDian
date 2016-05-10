@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:pacIconColor="?attr/pacIconColor"
     android:layout_gravity="center_vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- app:pacIconColor="?attr/pacIconColor" -->
 </com.tanchaoyin.diandian.widget.refresh.PacManRefreshHead>

@@ -1,11 +1,14 @@
-package com.tanchaoyin.diandian.http.manager;
+package com.tanchaoyin.diandian.api.zhihu.manager;
 
 import com.socks.library.KLog;
+import com.tanchaoyin.diandian.api.gank.GankApi;
+import com.tanchaoyin.diandian.api.gank.service.GankService;
+import com.tanchaoyin.diandian.api.zhihu.ZhihuApi;
+import com.tanchaoyin.diandian.api.zhihu.service.ZhihuService;
 import com.tanchaoyin.diandian.app.App;
-import com.tanchaoyin.diandian.bean.BaseGankData;
-import com.tanchaoyin.diandian.bean.GankDaily;
-import com.tanchaoyin.diandian.http.GankApi;
-import com.tanchaoyin.diandian.http.service.GankService;
+import com.tanchaoyin.diandian.bean.gank.BaseGankData;
+import com.tanchaoyin.diandian.bean.gank.GankDaily;
+import com.tanchaoyin.diandian.bean.zhihu.ZhihuDaily;
 import com.tanchaoyin.diandian.module.gank.presenter.impl.IGankDailyDataPresenterImpl;
 import com.tanchaoyin.diandian.utils.NetUtil;
 
@@ -32,13 +35,14 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
 import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by TanChaoyin on 2016/3/11.
+ * Created by TanChaoyin on 2016/5/10.
  */
-public class RetrofitManager {
+public class RetrofitManagerZhihu {
 
     //设缓存有效期为两天
     protected static final long CACHE_STALE_SEC = 60 * 60 * 24 * 2;
@@ -47,50 +51,40 @@ public class RetrofitManager {
     //查询网络的Cache-Control设置，头部Cache-Control设为max-age=0时则不会使用缓存而请求服务器
     protected static final String CACHE_CONTROL_NETWORK = "max-age=0";
 
-    private GankService gankService;
+    private ZhihuService zhihuService;
 
     private OkHttpClient okHttpClient;
 
-    private static RetrofitManager retrofitManagerInstance;
+    private static RetrofitManagerZhihu retrofitManagerInstance;
 
-    public static RetrofitManager getInstance() {
-        if (retrofitManagerInstance == null) retrofitManagerInstance = new RetrofitManager();
+    public static RetrofitManagerZhihu getInstance() {
+        if (retrofitManagerInstance == null) {
+            retrofitManagerInstance = new RetrofitManagerZhihu();
+        }
         return retrofitManagerInstance;
     }
 
-    private RetrofitManager() {
+    private RetrofitManagerZhihu() {
 
         initOkHttpClient();
 
-        /*
-         * 查看网络请求发送状况
-         */
-        /*if (EasyApplication.getInstance().log) {
-            okHttpClient.interceptors().add(chain -> {
-                Response response = chain.proceed(chain.request());
-                com.orhanobut.logger.Logger.d(chain.request().urlString());
-                return response;
-            });
-        }*/
-
-
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(GankApi.BASE_URL)
+                .baseUrl(ZhihuApi.BASE_URL)
                 .client(okHttpClient)
                 .addConverterFactory(JacksonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()).build();
 
-        this.gankService = retrofit.create(GankService.class);
+        this.zhihuService = retrofit.create(ZhihuService.class);
     }
 
-    public GankService getGankService() {
-        return gankService;
+    public ZhihuService getZhihuService() {
+        return zhihuService;
     }
 
     private void initOkHttpClient() {
         if (okHttpClient == null) {
 
-            synchronized (RetrofitManager.class) {
+            synchronized (RetrofitManagerZhihu.class) {
 
                 if (null == okHttpClient) {
                     KLog.e("初始化mOkHttpClient");
@@ -173,42 +167,25 @@ public class RetrofitManager {
     };
 
     /**
-     * 获取Gank列表
+     * 获取知乎日报列表
      *
      * 对API调用了observeOn(MainThread)之后，线程会跑在主线程上，包括onComplete也是，
      * unsubscribe也在主线程，然后如果这时候调用call.cancel会导致NetworkOnMainThreadException
      * 加一句unsubscribeOn(io)
      *
-     * @param type
-     * @param sise
-     * @param startPage
      * @return
      */
-    public Observable<ArrayList<BaseGankData>> getGankListObservable(String type,int sise, int startPage) {
-        return gankService.getData(type, sise, startPage)
-                .map(gankData -> gankData.results)
+    public Observable<ZhihuDaily> getZhihuDailyObservable() {
+        return zhihuService.getLastDaily()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .unsubscribeOn(Schedulers.io());
     }
 
-    public Observable<List<GankDaily>> getGankDailyListObservable(IGankDailyDataPresenterImpl.EasyDate easyDate) {
-        return Observable.just(easyDate)
-                .flatMapIterable(IGankDailyDataPresenterImpl.EasyDate :: getPastTime)
-                .flatMap(easyDate1 -> {
-                    /*
-                     * 感觉Android的数据应该不会为null
-                     * 所以以Android的数据为判断是否当天有数据
-                     */
-                    return gankService.getDaily(easyDate.getYear(), easyDate.getMonth(), easyDate.getDay())
-                            .filter(dailyData -> dailyData.results.androidData != null);
-                }).toSortedList(new Func2<GankDaily, GankDaily, Integer>() {
-                    @Override
-                    public Integer call(GankDaily gankDaily, GankDaily gankDaily2) {
-                        return gankDaily2.results.androidData.get(0).publishedAt.compareTo(gankDaily.results.androidData.get(0).publishedAt);
-                    }
-                });
-
+    public Observable<ZhihuDaily> getTheDailyObservable(String date) {
+        return zhihuService.getTheDaily(date)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .unsubscribeOn(Schedulers.io());
     }
-
 }

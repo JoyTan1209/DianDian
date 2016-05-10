@@ -10,6 +10,8 @@
     <string name="daily_ios_tag_tv">iOS</string>
     <string name="daily_js_tag_tv">前端</string>
 
+    <string name="zhihu">知乎日报</string>
+
     <!-- setting -->
     <string name="general_settings">常规</string>
     <string name="right_hand_mode">右手操作模式</string>
@@ -24,7 +26,7 @@
 
     <array name="drawer_content">
         <item>干货</item>
-        <item>回收站</item>
+        <item>知乎日报</item>
     </array>
 
     <string name="no_email_app_tip">请先安装邮件应用并设置账户,或直接发送邮件至 joytan1209@163.com</string>

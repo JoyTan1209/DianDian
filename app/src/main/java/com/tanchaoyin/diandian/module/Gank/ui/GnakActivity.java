@@ -9,7 +9,7 @@ import com.tanchaoyin.diandian.app.AppManager;
 import com.tanchaoyin.diandian.base.BaseActivity;
 import com.tanchaoyin.diandian.base.BaseFragment;
 import com.tanchaoyin.diandian.base.adapter.BaseFragmentAdapter;
-import com.tanchaoyin.diandian.http.GankType;
+import com.tanchaoyin.diandian.api.gank.GankType;
 import com.tanchaoyin.diandian.module.gank.presenter.IGankPresenter;
 import com.tanchaoyin.diandian.module.gank.presenter.impl.IGankPresenterImpl;
 import com.tanchaoyin.diandian.module.gank.view.IGankView;

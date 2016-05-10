@@ -19,8 +19,8 @@ import android.widget.Toast;
 
 import com.tanchaoyin.diandian.R;
 import com.tanchaoyin.diandian.base.BaseToolbarActivity;
-import com.tanchaoyin.diandian.http.GankType;
-import com.tanchaoyin.diandian.http.GankTypeDict;
+import com.tanchaoyin.diandian.api.gank.GankType;
+import com.tanchaoyin.diandian.api.gank.GankTypeDict;
 import com.tanchaoyin.diandian.utils.IntentUtils;
 import com.tanchaoyin.diandian.utils.WebViewUtils;
 

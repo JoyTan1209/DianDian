@@ -13,4 +13,4 @@
     app:tabSelectedTextColor="@color/material_white"
     app:tabTextColor="@color/material_grey_300"
     tools:ignore="PrivateResource"
-    android:visibility="gone"/>
+    android:visibility="visible"/>

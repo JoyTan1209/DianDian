@@ -1,9 +1,9 @@
 package com.tanchaoyin.diandian.module.gank.model.impl;
 
 import com.socks.library.KLog;
-import com.tanchaoyin.diandian.bean.BaseGankData;
+import com.tanchaoyin.diandian.api.gank.manager.RetrofitManagerGank;
+import com.tanchaoyin.diandian.bean.gank.BaseGankData;
 import com.tanchaoyin.diandian.callback.RequestCallback;
-import com.tanchaoyin.diandian.http.manager.RetrofitManager;
 import com.tanchaoyin.diandian.module.gank.model.IGankInteractor;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class IGankInteractorImpl implements IGankInteractor<List<BaseGankData>> 
     @Override
     public Subscription requestGankList(final RequestCallback<List<BaseGankData>> callback, String type, int size, int startPage) {
         KLog.e("Gank数据列表" + type + size);
-        return RetrofitManager.getInstance()
+        return RetrofitManagerGank.getInstance()
                 .getGankListObservable(type, size, startPage)
                 .doOnSubscribe(new Action0() {
                     @Override

@@ -1,6 +1,7 @@
 package com.tanchaoyin.diandian.base;
 
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -35,26 +36,19 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        if (null == fragmentRootView) {
-            if (getClass().isAnnotationPresent(ActivityFragmentInject.class)) {
-                ActivityFragmentInject annotation = getClass()
-                        .getAnnotation(ActivityFragmentInject.class);
-                contentViewId = annotation.contentViewId();
-            } else {
-                throw new RuntimeException(
-                        "Class must add annotations of ActivityFragmentInitParams.class");
-            }
-            fragmentRootView = inflater.inflate(contentViewId, container, false);
+        fragmentRootView = inflater.inflate(getLayoutView(), container, false);
 
-            ButterKnife.bind(fragmentRootView);
+        ButterKnife.bind(fragmentRootView);
 
-            initView(fragmentRootView);
-        }
+        initView(fragmentRootView);
 
         return fragmentRootView;
     }
 
     protected abstract void initView(View fragmentRootView);
+
+    protected abstract @LayoutRes
+    int getLayoutView();
 
     @Override
     public void onResume() {

@@ -3,6 +3,7 @@ package com.tanchaoyin.diandian.module.home.presenter.impl;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.IntDef;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -10,11 +11,14 @@ import android.view.MenuItem;
 
 import com.tanchaoyin.diandian.R;
 import com.tanchaoyin.diandian.base.BasePresenterImpl;
+import com.tanchaoyin.diandian.module.home.fragments.HomeGankFragment;
 import com.tanchaoyin.diandian.module.home.presenter.IMainPresenter;
 import com.tanchaoyin.diandian.module.home.view.MainView;
 import com.tanchaoyin.diandian.module.setting.ui.SettingActivity;
+import com.tanchaoyin.diandian.module.zhihu.ui.ZhihuFragment;
 import com.tanchaoyin.diandian.utils.PreferenceUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.greenrobot.event.EventBus;
@@ -28,11 +32,17 @@ public class IMainPresenterImpl extends BasePresenterImpl<MainView,List<String>>
     private List<String> drawerList;
     private PreferenceUtils mPreferenceUtils;
     private boolean isRightHandMode = false;
+    private MainView mainView;
+    private ArrayList<Fragment> mFragments;
+    private ArrayList<Integer> titles;
 
     public IMainPresenterImpl(Context context,MainView view, List<String> drawerList) {
         super(view);
         this.mContext = context;
         this.drawerList = drawerList;
+        this.mainView = view;
+        mFragments = new ArrayList<Fragment>();
+        titles = new ArrayList<>();
         initDrawer();
         EventBus.getDefault().register(this);
     }
@@ -53,6 +63,18 @@ public class IMainPresenterImpl extends BasePresenterImpl<MainView,List<String>>
             view.setMenuGravity(Gravity.START);
         }
         isRightHandMode = end;
+    }
+
+    @Override
+    public void initLeftMenu() {
+        titles.add(R.string.gank);
+        titles.add(R.string.zhihu);
+
+        for (int i = 0; i < titles.size() ; i++) {
+            addFragment(mContext.getString(titles.get(i)));
+        }
+
+        mainView.initLeftMenu(mFragments,titles);
     }
 
     @Override
@@ -134,6 +156,26 @@ public class IMainPresenterImpl extends BasePresenterImpl<MainView,List<String>>
             return true;
         }
         return false;
+    }
+
+    private void addFragment(String name) {
+        switch (name) {
+            case "干货":
+                mFragments.add(new HomeGankFragment());
+                break;
+            case "知乎日报":
+                mFragments.add(new ZhihuFragment());
+                break;
+            case "ZHIHU":
+                mFragments.add(new HomeGankFragment());
+                break;
+            case "VIDEO":
+                mFragments.add(new HomeGankFragment());
+                break;
+            case "IT":
+                mFragments.add(new HomeGankFragment());
+                break;
+        }
     }
 
     public void onEventMainThread(NotifyEvent event){
