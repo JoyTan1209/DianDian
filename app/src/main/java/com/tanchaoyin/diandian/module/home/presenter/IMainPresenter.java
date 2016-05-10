@@ -17,7 +17,7 @@ public interface IMainPresenter extends BasePresenter {
 
     void onDrawerOpened();
 
-    void onDrawerClosed();
+    void onDrawerClosed(String title);
 
     void initItemLayoutManager();
 

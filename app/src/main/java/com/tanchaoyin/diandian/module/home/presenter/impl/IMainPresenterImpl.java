@@ -89,9 +89,9 @@ public class IMainPresenterImpl extends BasePresenterImpl<MainView,List<String>>
     }
 
     @Override
-    public void onDrawerClosed() {
+    public void onDrawerClosed(String title) {
 
-        view.setToolbarTitle(drawerList.get(0));
+        view.setToolbarTitle(title);
     }
 
     @Override

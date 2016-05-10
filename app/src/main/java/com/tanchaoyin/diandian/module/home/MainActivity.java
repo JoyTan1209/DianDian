@@ -57,6 +57,8 @@ public class MainActivity extends BaseActivity<IMainPresenter> implements MainVi
 
     private IMainPresenter mainPresenter;
 
+    private String title;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         launchWithNoAnim();
@@ -122,6 +124,8 @@ public class MainActivity extends BaseActivity<IMainPresenter> implements MainVi
                 TextView textView = (TextView) linearLayout.getChildAt(0);
                 textView.getText();
                 switchFragment(mFragments.get(position), textView.getText().toString());
+                title = textView.getText().toString();
+                mainPresenter.onDrawerClosed(title);
                 closeDrawer();
             }
         });
@@ -139,7 +143,7 @@ public class MainActivity extends BaseActivity<IMainPresenter> implements MainVi
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
                 invalidateOptionsMenu();
-                mainPresenter.onDrawerClosed();
+                mainPresenter.onDrawerClosed(title);
             }
         };
         mDrawerToggle.setDrawerIndicatorEnabled(true);
