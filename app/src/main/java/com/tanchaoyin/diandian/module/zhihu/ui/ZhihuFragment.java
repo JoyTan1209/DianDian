@@ -48,7 +48,7 @@ public class ZhihuFragment extends BaseFragment<IZhihuPresenter> implements IZhi
 
         context = getActivity();
 
-        presenter = new IZhihuPresenterImpl(this);
+        presenter = IZhihuPresenterImpl.getInstance(this);
 
     }
 
@@ -58,11 +58,22 @@ public class ZhihuFragment extends BaseFragment<IZhihuPresenter> implements IZhi
     }
 
     @Override
+    public void showProgress() {
+        super.showProgress();
+        refreshLayout.setRefreshing(true);
+    }
+
+    @Override
+    public void hideProgress() {
+        super.hideProgress();
+        refreshLayout.setRefreshing(false);
+    }
+
+    @Override
     public void updateZhihuListView(ZhihuDaily data, DataLoadState state) {
 
         switch (state) {
             case STATE_REFRESH_SUCCESS:
-                refreshLayout.setRefreshing(false);
                 if (null == recyclerAdapter) {
                     initZhihuList(data);
                 } else {
@@ -74,7 +85,6 @@ public class ZhihuFragment extends BaseFragment<IZhihuPresenter> implements IZhi
                 }
                 break;
             case STATE_REFRESH_FAIL:
-                refreshLayout.setRefreshing(false);
                 break;
             case STATE_LOAD_MORE_SUCCESS:
                 // 隐藏尾部加载
@@ -157,4 +167,10 @@ public class ZhihuFragment extends BaseFragment<IZhihuPresenter> implements IZhi
         });
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenter.onDestroy();
+        recyclerAdapter = null;
+    }
 }

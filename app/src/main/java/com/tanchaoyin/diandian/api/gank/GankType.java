@@ -20,7 +20,7 @@ public class GankType {
     public static final Map<Integer,String> gankTypeMap = new LinkedHashMap<>();
 
     public static void initMap() {
-        gankTypeMap.put(daily,"每日精彩");
+//        gankTypeMap.put(daily,"每日精彩");
         gankTypeMap.put(android,GankApi.DATA_TYPE_ANDROID);
         gankTypeMap.put(ios,GankApi.DATA_TYPE_IOS);
         gankTypeMap.put(js,GankApi.DATA_TYPE_JS);

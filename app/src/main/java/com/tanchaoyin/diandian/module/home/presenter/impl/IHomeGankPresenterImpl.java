@@ -23,6 +23,6 @@ public class IHomeGankPresenterImpl extends BasePresenterImpl<IHomeGankView,List
 
     @Override
     public void onDestroy() {
-
+        super.onDestroy();
     }
 }

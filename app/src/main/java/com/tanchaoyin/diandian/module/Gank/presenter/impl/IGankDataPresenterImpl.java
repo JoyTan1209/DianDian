@@ -79,6 +79,9 @@ public class IGankDataPresenterImpl extends BasePresenterImpl<IGankListView,List
 
     @Override
     public void onDestroy() {
-
+        super.onDestroy();
+        if (null != iGankInteractor) {
+            iGankInteractor = null;
+        }
     }
 }

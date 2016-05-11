@@ -252,10 +252,12 @@ public class MainActivity extends BaseActivity<IMainPresenter> implements MainVi
             fragment.setExitTransition(slideTransition);
         }
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.replace, fragment).commit();
-        currentFragment = fragment;
-        ActionBar actionBar = getSupportActionBar();
-        assert actionBar != null;
-        actionBar.setTitle(title);
+        if (currentFragment == null || !currentFragment.getClass().getName().equals(fragment.getClass().getName())) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.replace, fragment).commit();
+            currentFragment = fragment;
+            ActionBar actionBar = getSupportActionBar();
+            assert actionBar != null;
+            actionBar.setTitle(title);
+        }
     }
 }

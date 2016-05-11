@@ -20,6 +20,16 @@ public class IZhihuPresenterImpl extends BasePresenterImpl<IZhihuView,ZhihuDaily
 
     private IZhihuInteractor<ZhihuDaily> iZhihuInteractor;
 
+    private static IZhihuPresenterImpl iZhihuPresenterImplInstance;
+
+    public static IZhihuPresenterImpl getInstance(IZhihuView view) {
+        if (null == iZhihuPresenterImplInstance) {
+            iZhihuPresenterImplInstance = new IZhihuPresenterImpl(view);
+        }
+
+        return iZhihuPresenterImplInstance;
+    }
+
     public IZhihuPresenterImpl(IZhihuView view) {
         super(view);
         iZhihuInteractor = new IZhihuInteractorImpl();
@@ -62,5 +72,22 @@ public class IZhihuPresenterImpl extends BasePresenterImpl<IZhihuView,ZhihuDaily
     public void loadMoreData(String date) {
         isRefresh = false;
         subscription = iZhihuInteractor.requestDailyList(this, date);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (null != iZhihuInteractor) {
+            iZhihuInteractor = null;
+        }
+        if (null != subscription) {
+            subscription = null;
+        }
+        if (null != view) {
+            view = null;
+        }
+        if (null != iZhihuPresenterImplInstance) {
+            iZhihuPresenterImplInstance = null;
+        }
     }
 }

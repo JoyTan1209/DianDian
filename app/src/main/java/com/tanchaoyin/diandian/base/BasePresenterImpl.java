@@ -67,6 +67,6 @@ public class BasePresenterImpl<T extends BaseView, V> implements BasePresenter,R
 
     @Override
     public void requestSuccess(V data) {
-
+        view.hideProgress();
     }
 }

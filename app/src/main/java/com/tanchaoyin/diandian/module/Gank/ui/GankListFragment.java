@@ -85,15 +85,14 @@ public class GankListFragment extends BaseFragment<IGankDataPresenter> implement
 
         refreshLayout.setColorSchemeColors(AttrsHelper.getColor(this.context, R.attr.colorPrimary), AttrsHelper.getColor(this.context, R.attr.colorPrimaryLight));
 
-        refreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                refreshLayout.setRefreshing(true);
-            }
-        });
+    }
 
-        presenter = new IGankDataPresenterImpl(this, gankType);
-
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (getUserVisibleHint()) {
+            presenter = new IGankDataPresenterImpl(this, gankType);
+        }
     }
 
     @Override
@@ -102,11 +101,22 @@ public class GankListFragment extends BaseFragment<IGankDataPresenter> implement
     }
 
     @Override
+    public void showProgress() {
+        super.showProgress();
+        refreshLayout.setRefreshing(true);
+    }
+
+    @Override
+    public void hideProgress() {
+        super.hideProgress();
+        refreshLayout.setRefreshing(false);
+    }
+
+    @Override
     public void updateGankListView(List<BaseGankData> data, DataLoadState state, String type) {
 
         switch (state) {
             case STATE_REFRESH_SUCCESS:
-                refreshLayout.setRefreshing(false);
                 if (null == recyclerAdapter) {
                     initGankList(data, gankType);
                 } else {
@@ -118,7 +128,6 @@ public class GankListFragment extends BaseFragment<IGankDataPresenter> implement
                 }
                 break;
             case STATE_REFRESH_FAIL:
-                refreshLayout.setRefreshing(false);
                 break;
             case STATE_LOAD_MORE_SUCCESS:
                 // 隐藏尾部加载
@@ -226,4 +235,13 @@ public class GankListFragment extends BaseFragment<IGankDataPresenter> implement
             }
         });
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (null != presenter)
+        presenter.onResume();
+        recyclerAdapter = null;
+    }
+
 }

@@ -13,6 +13,7 @@ import rx.Observer;
 import rx.Scheduler;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action0;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
@@ -24,6 +25,12 @@ public class IZhihuInteractorImpl implements IZhihuInteractor<ZhihuDaily> {
     public Subscription requestZhihuDailyList(RequestCallback<ZhihuDaily> callback) {
         return RetrofitManagerZhihu.getInstance()
                 .getZhihuDailyObservable()
+                .doOnSubscribe(new Action0() {
+                    @Override
+                    public void call() {
+                        callback.beforeRequest();
+                    }
+                })
                 .map(new Func1<ZhihuDaily, ZhihuDaily>() {
                     @Override
                     public ZhihuDaily call(ZhihuDaily zhihuDaily) {

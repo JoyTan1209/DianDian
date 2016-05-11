@@ -81,20 +81,31 @@ public class GankDailyListFragment extends BaseFragment<IGankDataPresenter> impl
 
         refreshLayout.setColorSchemeColors(AttrsHelper.getColor(this.context, R.attr.colorPrimary), AttrsHelper.getColor(this.context, R.attr.colorPrimaryLight));
 
-        refreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                refreshLayout.setRefreshing(true);
-            }
-        });
+    }
 
-        presenter = new IGankDailyDataPresenterImpl(this);
-
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (getUserVisibleHint()) {
+            presenter = new IGankDailyDataPresenterImpl(this);
+        }
     }
 
     @Override
     protected int getLayoutView() {
         return R.layout.fragment_ganklist;
+    }
+
+    @Override
+    public void showProgress() {
+        super.showProgress();
+        refreshLayout.setRefreshing(true);
+    }
+
+    @Override
+    public void hideProgress() {
+        super.hideProgress();
+        refreshLayout.setRefreshing(false);
     }
 
     private void initGankDailyList(final List<GankDaily> data) {
@@ -214,7 +225,6 @@ public class GankDailyListFragment extends BaseFragment<IGankDataPresenter> impl
 
         switch (state) {
             case STATE_REFRESH_SUCCESS:
-                refreshLayout.setRefreshing(false);
                 if (null == recyclerAdapter) {
                     initGankDailyList(data);
                 } else {
@@ -226,7 +236,6 @@ public class GankDailyListFragment extends BaseFragment<IGankDataPresenter> impl
                 }
                 break;
             case STATE_REFRESH_FAIL:
-                refreshLayout.setRefreshing(false);
                 break;
             case STATE_LOAD_MORE_SUCCESS:
                 // 隐藏尾部加载
@@ -245,5 +254,12 @@ public class GankDailyListFragment extends BaseFragment<IGankDataPresenter> impl
                 autoLoadMoreRecyclerView.notifyMoreLoaded();
                 break;
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenter.onDestroy();
+        recyclerAdapter = null;
     }
 }
