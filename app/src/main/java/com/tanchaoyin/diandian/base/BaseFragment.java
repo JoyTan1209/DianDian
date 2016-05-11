@@ -24,21 +24,17 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     protected View fragmentRootView;
 
-    protected int contentViewId;
-
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(getActivity());
     }
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         fragmentRootView = inflater.inflate(getLayoutView(), container, false);
 
-        ButterKnife.bind(fragmentRootView);
+        ButterKnife.bind(this, fragmentRootView);
 
         initView(fragmentRootView);
 

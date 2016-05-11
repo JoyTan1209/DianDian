@@ -9,5 +9,11 @@ public interface BasePresenter {
 
     void onResume();
 
+    void onStart ();
+
+    void onPause();
+
+    void onStop ();
+
     void onDestroy();
 }

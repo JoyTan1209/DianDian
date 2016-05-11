@@ -59,10 +59,6 @@ public class GnakActivity extends BaseActivity<IGankPresenter> implements IGankV
     @Override
     public void initViewPager() {
 
-        /*TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);*/
-
         List<BaseFragment> fragments = new ArrayList<>();
         final List<String> title = new ArrayList<>();
 

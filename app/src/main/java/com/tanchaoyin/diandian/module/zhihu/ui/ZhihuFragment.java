@@ -48,8 +48,6 @@ public class ZhihuFragment extends BaseFragment<IZhihuPresenter> implements IZhi
 
         context = getActivity();
 
-        ButterKnife.bind(this,fragmentRootView);
-
         presenter = new IZhihuPresenterImpl(this);
 
     }

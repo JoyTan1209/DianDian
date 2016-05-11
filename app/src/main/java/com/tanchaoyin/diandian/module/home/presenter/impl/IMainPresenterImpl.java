@@ -118,6 +118,21 @@ public class IMainPresenterImpl extends BasePresenterImpl<MainView,List<String>>
     @Override
     public void onResume() {
 
+        if (isRightHandMode != mPreferenceUtils.getBooleanParam(mContext
+                .getString(R.string.right_hand_mode_key))){
+            isRightHandMode = !isRightHandMode;
+            if (isRightHandMode){
+                view.setMenuGravity(Gravity.END);
+            }else{
+                view.setMenuGravity(Gravity.START);
+            }
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        view.closeDrawer();
     }
 
     @Override

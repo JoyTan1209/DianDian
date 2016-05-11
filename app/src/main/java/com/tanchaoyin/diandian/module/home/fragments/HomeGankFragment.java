@@ -107,4 +107,22 @@ public class HomeGankFragment extends BaseFragment<IHomeGankPresenter> implement
             toast("数据异常");
         }
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        presenter.onStop();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenter.onResume();
+    }
 }

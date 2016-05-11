@@ -36,6 +36,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity<IMainPresenter> implements MainView {
 
@@ -82,6 +83,8 @@ public class MainActivity extends BaseActivity<IMainPresenter> implements MainVi
                 .getStringArray(R.array.drawer_content));
         mainPresenter = new IMainPresenterImpl(this,this,drawerList);
         mainPresenter.initLeftMenu();
+
+        mDrawerMenuListView.setBackgroundColor(getColorPrimary());
     }
 
     @Override

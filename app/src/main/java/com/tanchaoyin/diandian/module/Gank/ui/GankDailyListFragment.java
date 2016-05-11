@@ -30,15 +30,17 @@ import com.tanchaoyin.diandian.widget.MultiSwipeRefreshLayout;
 
 import java.util.List;
 
+import butterknife.Bind;
+
 /**
  * Created by TanChaoyin on 2016/3/18.
  */
 public class GankDailyListFragment extends BaseFragment<IGankDataPresenter> implements IGankDailyView {
 
-//    @Bind(R.id.gank_list_rv)
+    @Bind(R.id.gank_list_rv)
     AutoLoadMoreRecyclerView autoLoadMoreRecyclerView;
 
-//    @Bind(R.id.refresh_layout)
+    @Bind(R.id.refresh_layout)
     MultiSwipeRefreshLayout refreshLayout;
 
     private BaseRecyclerAdapter<GankDaily> recyclerAdapter;
@@ -76,10 +78,6 @@ public class GankDailyListFragment extends BaseFragment<IGankDataPresenter> impl
 
     @Override
     protected void initView(View fragmentRootView) {
-
-        autoLoadMoreRecyclerView = (AutoLoadMoreRecyclerView) fragmentRootView.findViewById(R.id.gank_list_rv);
-
-        refreshLayout = (MultiSwipeRefreshLayout) fragmentRootView.findViewById(R.id.refresh_layout);
 
         refreshLayout.setColorSchemeColors(AttrsHelper.getColor(this.context, R.attr.colorPrimary), AttrsHelper.getColor(this.context, R.attr.colorPrimaryLight));
 
